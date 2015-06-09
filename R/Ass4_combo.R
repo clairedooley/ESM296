@@ -54,5 +54,5 @@ if (timestep=="y") {
   colnames(temp.output) = c('year','tavg')
 }
 
-return(list(Wettest.spring.rain = precip.output, Coldest.spring.temp = temp.output))
+return(c(Wettest.spring.rain = precip.output, Coldest.spring.temp = temp.output))
 }
