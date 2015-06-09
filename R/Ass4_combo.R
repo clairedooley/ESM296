@@ -41,7 +41,7 @@ if (timestep=="m") {
   
   temp.data = subset(spring.clim, spring.clim$year == low.temp$year, select = c(month, year, tavg)) #creates a subset of spring.clim of month, year, temp data for the year with lowest spring temp
   temp.output = aggregate(precip.data$rain, by = list(temp.data$month, temp.data$year), mean)
-  colnames(precip.output) = c('month','year','tavg')
+  colnames(temp.output) = c('month','year','tavg')
 }
 
 if (timestep=="y") {
@@ -51,15 +51,8 @@ if (timestep=="y") {
   
   temp.data = subset(spring.clim, spring.clim$year == low.temp$year, select = c(year, tavg)) #creates a subset of spring.clim of month, year, temp data for the year with lowest spring temp
   temp.output = aggregate(precip.data$rain, by = list(temp.data$year), sum)
-  colnames(precip.output) = c('year','tavg')
+  colnames(temp.output) = c('year','tavg')
 }
 
-return(list("Coldest spring temps" = temp.output, "Wettest spring rainfall" = precip.output))
+return(list(Wettest.spring.rain = precip.output, Coldest.spring.temp = temp.output))
 }
-
-#    newdata = aggregate(dataset[,c("tmax","tmin","month")], by=list(dataset$month), mean)
-#    tmp = aggregate(dataset[,c("rain","month")], by=list(dataset$month),sum)
-#    newdata=tmp$rain
-#  }
-#  return(newdata)
-#}
